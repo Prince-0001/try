@@ -1,0 +1,36 @@
+<div class="background"></div>
+<div class="login-container">
+  <div class="login-box">
+    <h3>WELCOME TO THE</h3>
+    <div class="header">
+      <h1>Grocery Store</h1>
+      <h2>Management System</h2>
+    </div>
+    <p>Streamline inventory, track orders, manage suppliers, and enhance store Operations-all in one place. Log in to keep everthing running smoothly</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h3>ACCOUNT SIGN IN</h3>
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" placeholder="Enter username" />
+      @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+        <div class="error">Username is required</div>
+      }
+
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" placeholder="Enter password" />
+      @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+        <div class="error">Password is required</div>
+      }
+      @if(errorMessage){
+        <div class="error">{{errorMessage}}</div>
+      }
+
+      
+      <div class="signup-container">
+        <span>Don't have an account? <a routerLink="/signUp">Sign Up</a></span>
+        <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
+      </div>
+    </form>
+
+  </div>
+</div>

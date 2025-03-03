@@ -1,0 +1,41 @@
+<div class="background"></div>
+<div class="login-container">
+  <div class="login-box">
+    <div class="header">
+      <h1>Grocery Store</h1>
+      <h2>Management System</h2>
+    </div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <h3>CREATE AN ACCOUNT</h3>
+
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" placeholder="Enter username" />
+      @if (signupForm.get('username')?.invalid && signupForm.get('username')?.touched) {
+        <div class="error">Username is required</div>
+      }
+
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" placeholder="Enter password" />
+      @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+        <div class="error">Password is required</div>
+      }
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirm password" />
+      @if (signupForm.hasError('passwordMismatch')) {
+        <div class="error">Passwords do not match</div>
+      }
+      @if(error){
+        <div class="error">{{error}}</div>
+      }
+
+      <div class="signup-container">
+        <span>Already have an account? <a routerLink="/login">Sign In</a></span>
+        <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+      </div>
+    </form>
+
+    
+  </div>
+</div>
