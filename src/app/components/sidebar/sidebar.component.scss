@@ -1,0 +1,100 @@
+
+
+.sidebar {
+    width: 314px;
+    transition: width 0.3s ease-in-out;
+    background: #E7E9F4;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 80px; 
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #212121;
+}
+
+.sidebar-header img {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+
+.sidebar-item span {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .sidebar-item span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+  
+.menu-icon {
+    margin-right: 15px;
+    font-size: 24px;
+}
+  
+.sidebar-content {
+    flex-grow: 1;
+}
+  
+mat-nav-list {
+    width: 100%;
+}
+  
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    transition: background 0.3s, color 0.3s;
+}
+  
+.sidebar-item mat-icon {
+    margin-right: 15px;
+    font-size: 22px;
+    color: #4050B5; 
+}
+
+.sidebar-item:hover {
+    background: #4050B5;
+    color: white;
+    border-radius: 20px;
+}
+
+.sidebar-item:hover mat-icon {
+    color: white !important;
+}
+  
+mat-divider {
+    margin: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+  
+.sidebar-footer {
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

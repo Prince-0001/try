@@ -1,0 +1,51 @@
+<div class="sidebar" 
+     [class.collapsed]="isCollapsed" 
+     (mouseenter)="expandSidebar()" 
+     (mouseleave)="collapseSidebar()">
+
+  <div class="sidebar-header">
+    <img src="../../../assets/images/logo.png" alt="logo">
+    <div class="sidebar-title" *ngIf="!isCollapsed">
+      <span>Grocery Store</span>
+      <span>Management System</span>
+    </div>
+  </div>
+
+  <div class="sidebar-content">
+    <mat-nav-list>
+      <a class="sidebar-item" routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon> <span *ngIf="!isCollapsed">Dashboard</span>
+      </a>
+      <a class="sidebar-item" routerLink="/stocks">
+        <mat-icon>inventory</mat-icon> <span *ngIf="!isCollapsed">Stocks Management</span>
+      </a>
+      <a class="sidebar-item" routerLink="/shipments">
+        <mat-icon>local_shipping</mat-icon> <span *ngIf="!isCollapsed">Shipment Tracking</span>
+      </a>
+      <a class="sidebar-item" routerLink="/reports">
+        <mat-icon>analytics</mat-icon> <span *ngIf="!isCollapsed">Reports & Analytics</span>
+      </a>
+      <a class="sidebar-item" routerLink="/customers">
+        <mat-icon>people</mat-icon> <span *ngIf="!isCollapsed">Customer Management</span>
+      </a>
+      <a class="sidebar-item" routerLink="/blogs">
+        <mat-icon>article</mat-icon> <span *ngIf="!isCollapsed">Food Safety Blogs</span>
+      </a>
+    </mat-nav-list>
+  </div>
+
+  <div class="sidebar-footer">
+    <!-- <mat-divider></mat-divider> -->
+    <mat-nav-list>
+      <a class="sidebar-item" routerLink="/settings">
+        <mat-icon>settings</mat-icon> <span *ngIf="!isCollapsed">Settings</span>
+      </a>
+      <a class="sidebar-item" routerLink="/account">
+        <mat-icon>person</mat-icon> <span *ngIf="!isCollapsed">My Account</span>
+      </a>
+      <a class="sidebar-item" routerLink="/help">
+        <mat-icon>help</mat-icon> <span *ngIf="!isCollapsed">Help & Support</span>
+      </a>
+    </mat-nav-list>
+  </div>
+</div>
