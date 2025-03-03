@@ -1,0 +1,113 @@
+.map-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.map-section {
+    flex: 3;
+    height: 700px;
+}
+
+.shipment-list {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    background: #f8f9fa;
+    padding: 15px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Shipment Overview Title */
+.shipment-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Shipment Card */
+.shipment-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.shipment-card:hover {
+    transform: scale(1.02);
+}
+
+/* Row 1: Avatar & Name */
+.shipment-row-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Circular Avatar (Left Side) */
+.shipment-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #EADDFF;
+    color: #4F378A;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Shipment Details (Right Side) */
+.shipment-details {
+    flex: 1;
+    padding-left: 15px;
+}
+
+/* Name Styling */
+.shipment-name {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Longitude Styling */
+.shipment-coordinates {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Row 2: Order ID & Date */
+.shipment-row-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F3F3F3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+/* Order & Date Icons */
+.order-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+mat-icon {
+    font-size: 16px;
+    color: #4050B5;
+}
+
+.shipment-title-container{
+    background-color: #EEEFF7;
+    border:1px solid #EEEFF7;
+}

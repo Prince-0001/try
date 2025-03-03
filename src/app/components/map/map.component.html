@@ -1,0 +1,53 @@
+<div class="map-container">
+    
+    <!-- Left: Google Map -->
+    <div class="map-section">
+        <google-map [height]="'100%'" [width]="'100%'" [center]="selectedLocation" [zoom]="zoom">
+            
+            <!-- Markers for Shipments -->
+            <map-marker *ngFor="let shipment of shipments" [position]="{lat: shipment.lat, lng: shipment.lng}" title="{{ shipment.name }}">
+            </map-marker>
+
+            <!-- Polyline connecting all shipment locations -->
+            <map-polyline 
+                [path]="polylinePath"
+                [options]="{ strokeColor: '#4050B5', strokeOpacity: 0.8, strokeWeight: 3 }">
+            </map-polyline>
+
+        </google-map>
+    </div>
+
+    <!-- Right: Shipment List -->
+    <div class="shipment-list">
+        
+        <!-- Shipment Overview Heading -->
+        <h2 class="shipment-title">Shipment Overview</h2>
+
+        <mat-card *ngFor="let shipment of shipments" class="shipment-card" (click)="highlightLocation(shipment.lat, shipment.lng)">
+            
+            <!-- Row 1: Avatar & Name -->
+            <div class="shipment-row-1">
+                <div class="shipment-avatar">{{ shipment.name.charAt(0) }}</div>
+                
+                <div class="shipment-details">
+                    <div class="shipment-name">{{ shipment.name }}</div>
+                    <div class="shipment-coordinates">
+                        <mat-icon>location_on</mat-icon> {{ shipment.lat }}, {{ shipment.lng }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Order ID & Date -->
+            <div class="shipment-row-2">
+                <div class="order-info">
+                    <mat-icon>receipt</mat-icon> {{ shipment.orderId }}
+                </div>
+                <div class="order-info">
+                    <mat-icon>event</mat-icon> {{ shipment.date }}
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+
+</div>
