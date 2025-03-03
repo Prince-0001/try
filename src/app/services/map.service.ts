@@ -11,6 +11,22 @@ export interface Shipment {
   date: string;
 }
 
+export interface ShipmentList{
+  shipmentId: string;
+  shipperName: string;
+  phone: string;
+  status: string;
+  product: string;
+  supplier: string;
+  quantity: number;
+  price: number;
+  deliveryDate: string;
+  consignee: string;
+  destination: string;
+  connection: string;
+  task: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,5 +37,9 @@ export class MapService {
 
   getShipments(): Observable<Shipment[]> {
     return this.http.get<Shipment[]>(this.dataUrl);
+  }
+
+  getShipmentsList():Observable<ShipmentList[]>{
+    return this.http.get<ShipmentList[]>('assets/data/shipmentsList.json')
   }
 }

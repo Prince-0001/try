@@ -1,0 +1,132 @@
+/* Table Container */
+.table-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Table Wrapper */
+  .table-wrapper {
+    display: flex;
+    overflow: hidden;
+    height: 550px; // Adjustable height
+    width: 100%;
+    max-width: 1300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sticky First and Last Columns */
+  .sticky-column {
+    position: sticky;
+    top: 0;
+    background: #FFFFFF;
+    z-index: 2;
+    border-right: 1px solid #bbb;
+  }
+  
+  /* Left Column Sticky */
+  .left-column {
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    border-right: 1px solid #ccc;
+  }
+  
+  /* Right Column Sticky */
+  .right-column {
+    right: 0;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.05);
+    border-left: 1px solid #ccc;
+  }
+  
+  /* Scrollable Middle Section */
+  .scrollable-content {
+    overflow-x: auto;
+    flex-grow: 1;
+    white-space: nowrap;
+    scrollbar-width: none; // Hide scrollbar in Firefox
+    -ms-overflow-style: none; // Hide scrollbar in IE
+  }
+  
+  /* Hide scrollbar in Chrome/Safari */
+  .scrollable-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Table Styling */
+  .mat-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; // Allows dynamic column width
+  }
+  
+  /* Header Styling */
+  th {
+    background-color: #c5cae9;
+    color: #212121;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Table Cell Styling */
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+  }
+  
+  /* Row Hover Effect */
+  .mat-row:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Keep rows aligned */
+  .mat-header-row, .mat-row {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
+  
+  /* Pagination Styling */
+  .mat-paginator {
+    margin-top: 10px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .status-pending{
+    border:1px solid orange;
+    color:orange;
+    height: 40px;
+    width: 100%;
+    color:rgb(222, 212, 194)
+  }
+  .status-complete{
+    border:1px solid green;
+    color:green;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(196, 224, 196);
+  }
+  .status-failed{
+    border:1px solid red;
+    color:red;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(219, 183, 183);
+  }
+  .status-close{
+    border:1px solid grey;
+    color:grey;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(228, 228, 228);
+  }
+
+  

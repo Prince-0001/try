@@ -1,0 +1,88 @@
+<div class="table-container">
+    <div class="table-wrapper">
+  
+      <!-- Sticky First Column -->
+      <div class="sticky-column left-column">
+        <table mat-table [dataSource]="pagedData">
+          <ng-container [matColumnDef]="displayedColumns[0]">
+            <th  *matHeaderCellDef class="sticky">
+              {{ displayedColumns[0] | uppercase }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element[displayedColumns[0]] }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="[displayedColumns[0]]"></tr>
+          <tr mat-row *matRowDef="let row; columns: [displayedColumns[0]];"></tr>
+        </table>
+      </div>
+  
+      <!-- Scrollable Middle Columns -->
+      <div class="scrollable-content">
+        <table mat-table [dataSource]="pagedData">
+          <ng-container *ngFor="let column of displayedColumns.slice(1, displayedColumns.length - 1)" [matColumnDef]="column">
+            
+            <th  *matHeaderCellDef>
+              {{ column | uppercase }}
+            </th>
+  
+            <td  *matCellDef="let element">
+              <ng-container [ngSwitch]="column">
+                
+                <!-- Delivery Date Formatting -->
+                <span *ngSwitchCase="'deliveryDate'">
+                  {{ element.deliveryDate | date: 'MMMM yyyy' }}
+                </span>
+  
+                <!-- Status as a Styled Button -->
+                <button *ngSwitchCase="'status'" [ngClass]="getStatusClass(element.status)">
+                  {{ element.status | uppercase }}
+                </button>
+  
+                <!-- Default Data -->
+                <span *ngSwitchDefault>
+                  {{ element[column] }}
+                </span>
+  
+              </ng-container>
+            </td>
+  
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns.slice(1, displayedColumns.length - 1)"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns.slice(1, displayedColumns.length - 1)"></tr>
+        </table>
+      </div>
+  
+      <!-- Sticky Last Column -->
+      <div class="sticky-column right-column">
+        <table mat-table [dataSource]="pagedData">
+          <ng-container [matColumnDef]="displayedColumns[displayedColumns.length - 1]">
+            
+            <th  *matHeaderCellDef class="sticky">
+              {{ displayedColumns[displayedColumns.length - 1] | uppercase }}
+            </th>
+  
+            <td mat-cell *matCellDef="let element">
+              {{ element[displayedColumns[displayedColumns.length - 1]] }}
+            </td>
+  
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="[displayedColumns[displayedColumns.length - 1]]"></tr>
+          <tr mat-row *matRowDef="let row; columns: [displayedColumns[displayedColumns.length - 1]];"></tr>
+        </table>
+      </div>
+  
+    </div>
+  
+    <!-- Pagination -->
+    <mat-paginator
+      [length]="tableData.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  
+  </div>
+  
