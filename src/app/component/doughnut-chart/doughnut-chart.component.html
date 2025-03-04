@@ -1,1 +1,18 @@
-<p>doughnut-chart works!</p>
+<div class="chart-container">
+    <div class="chart-wrapper">
+      <canvas baseChart 
+        [data]="doughnutChartData" 
+        [options]="doughnutChartOptions" 
+        [type]="'doughnut'">
+      </canvas>
+      <div class="chart-center">{{ totalItems }}</div>
+    </div>
+  
+    <div class="chart-legend">
+      <div *ngFor="let item of data; let i = index" class="legend-item">
+        <div class="legend-color" [ngStyle]="{ 'background-color': colors[i] }"></div>
+        <span>{{ item.category }} ({{ item.count }})</span>
+      </div>
+    </div>
+  </div>
+  

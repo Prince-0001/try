@@ -1,8 +1,17 @@
 <div class="grid-container">
   <div class="grid-item">
-      <app-shipment-status-chart-component 
-          [shipments]="shipmentList"
-          [chartColors]="['#212121', '#FFA500', '#FF0000', '#0000FF']">
-      </app-shipment-status-chart-component>
+    <app-shipment-status-chart
+      *ngIf="shipmentChartData"
+      [chartData]="shipmentChartData"
+      [backgroundColors]="['#4CAF50', '#FFC107', '#F44336', '#2196F3']">
+    </app-shipment-status-chart>
+  </div>
+
+  <div class="grid-item">
+    <app-shipment-status-chart
+      *ngIf="taskChartData"
+      [chartData]="taskChartData"
+      [backgroundColors]="['#FF5733', '#33FF57', '#3357FF', '#FF33A1']">
+    </app-shipment-status-chart>
   </div>
 </div>

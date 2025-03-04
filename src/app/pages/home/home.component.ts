@@ -1,19 +1,48 @@
-import { Component } from '@angular/core';
-import { BarChartComponent } from "../../components/bar-chart/bar-chart.component";
-import { ShipmentStatusChartComponentComponent } from "../../components/shipment-status-chart-component/shipment-status-chart-component.component";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ShipmentStatusChartComponentComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
-  shipmentList = [
-    { id: 1, product: 'Laptop', supplier: 'Dell', status: 'Completed' },
-    { id: 2, product: 'Phone', supplier: 'Apple', status: 'In-Transit' },
-    { id: 3, product: 'Tablet', supplier: 'Samsung', status: 'Failed' },
-    { id: 4, product: 'Monitor', supplier: 'LG', status: 'Pending' }
-  ];
+export class HomeComponent implements OnInit {
+  shipmentChartData: any = null;
+  taskChartData: any = null;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.fetchShipmentData();
+    this.fetchTaskData();
+  }
+
+  fetchShipmentData() {
+    this.http.get<any[]>('API_URL_FOR_SHIPMENTS').subscribe(shipments => {
+      const statusCounts = shipments.reduce((acc, { status }) => {
+        acc[status] = (acc[status] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+
+      this.shipmentChartData = {
+        labels: Object.keys(statusCounts),
+        datasets: [{ data: Object.values(statusCounts) }]
+      };
+    });
+  }
+
+  fetchTaskData() {
+    this.http.get<any[]>('API_URL_FOR_TASKS').subscribe(tasks => {
+      const taskCounts = tasks.reduce((acc, { type }) => {
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+
+      this.taskChartData = {
+        labels: Object.keys(taskCounts),
+        datasets: [{ data: Object.values(taskCounts) }]
+      };
+    });
+  }
 }
