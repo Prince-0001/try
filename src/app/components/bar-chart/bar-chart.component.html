@@ -1,0 +1,21 @@
+<div class="chart-container">
+    <h3>Analysis</h3>
+  
+    <!-- Dropdown for filtering -->
+    <label for="filter">Filter:</label>
+    <select id="filter" (change)="onFilterChange($event)">
+      <option value="year">This Year</option>
+      <option value="month" selected>This Month</option>
+      <option value="lastWeek">Last Week</option>
+    </select>
+  
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [type]="'bar'"
+    ></canvas>
+  </div>
+  

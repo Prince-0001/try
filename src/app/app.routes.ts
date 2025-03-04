@@ -20,6 +20,10 @@ export const routes: Routes = [
                 path: 'map',
                 loadComponent: () => import('./components/map/map.component').then(m => m.MapComponent)
             },
+            {
+                path: 'home',
+                loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
+            },
             { 
                 path: 'shipment-tracking', 
                 loadComponent: () => import('./pages/shipment-tracking/shipment-tracking.component').then(m => m.ShipmentTrackingComponent) 
