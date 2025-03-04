@@ -1,0 +1,25 @@
+<div class="chart-container">
+    <canvas baseChart
+      [data]="doughnutChartData"
+      [options]="doughnutChartOptions"
+      [type]="'doughnut'">
+    </canvas>
+    <div class="chart-center">{{ totalShipments }}</div>
+  
+    <!-- Legend on the Right -->
+    <div class="legend-container">
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #4CAF50;"></div> Completed
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #FFC107;"></div> In-Transit
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #F44336;"></div> Failed
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #2196F3;"></div> Pending
+      </div>
+    </div>
+  </div>
+  
