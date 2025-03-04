@@ -1,15 +1,17 @@
 <div class="chart-container">
-    <canvas baseChart
-      [data]="doughnutChartData"
-      [options]="doughnutChartOptions"
-      [type]="'doughnut'">
-    </canvas>
-    <div class="chart-center">{{ totalShipments }}</div>
+    <div class="chart-wrapper">
+      <canvas baseChart 
+        [data]="chartData" 
+        [options]="doughnutChartOptions" 
+        [type]="'doughnut'">
+      </canvas>
+      <div class="chart-center">{{ chartData.datasets[0].data.reduce((a, b) => a + b, 0) }}</div>
+    </div>
   
-    <!-- Dynamic Legend -->
-    <div class="legend-container">
-      <div class="legend-item" *ngFor="let label of doughnutChartData.labels; let i = index">
-        <div class="legend-color" [ngStyle]="{ 'background-color': chartColors[i] }"></div> {{ label }}
+    <div class="chart-legend">
+      <div *ngFor="let label of chartData.labels; let i = index" class="legend-item">
+        <div class="legend-color" [ngStyle]="{ 'background-color': backgroundColors[i] }"></div>
+        <span>{{ label }} ({{ chartData.datasets[0].data[i] }})</span>
       </div>
     </div>
   </div>
