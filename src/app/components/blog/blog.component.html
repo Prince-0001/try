@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="left">
+        <a class="back" routerLink="/allblogs">← Food Safety News</a>
+  
+    <div *ngIf="blog" class="blog-details">
+      <img [src]="blog.image" alt="Blog Image" class="blog-image" />
+  
+      <p class="published-date">{{ blog.publishedDate | date:'shortDate' }}</p>
+  
+      <h1 class="blog-title">{{ blog.title }}</h1>
+  
+      <p class="blog-description">{{ blog?.description }}</p>
+  
+      <div *ngIf="blog.blogInfo" class="blog-info">
+        <p>Posted by: {{ blog.blogInfo.postBy }}</p>
+      </div>
+  
+      <div class="additional-description">
+        <p>{{ blog?.description }}</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="right">
+        <div class="box">
+            <img src="../assets/images/blog3.png">
+            <p>12/1/23</p>
+            <h3>Food Grocery Logistic</h3>
+            <p>{{ blog?.description | slice:0:80 }}</p>
+        </div>
+
+        <div class="box">
+            <img src="../assets/images/blog3.png">
+            <p>10/3/21</p>
+            <h3>Inventory Turnover Ratios</h3>
+            <p>{{ blog?.description | slice:0:80 }}</p>
+        </div>
+        
+    </div>
+    
+</div>
+

@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="left">
+      <div class="heading">
+        <h1>All Blog Posts</h1>
+      </div>
+  
+      <div class="lower">
+        <div class="box" *ngFor="let blog of filteredBlogs" (click)="viewBlog(blog.id)">
+          <img [src]="blog.image" alt="Blog Image">
+          <p>{{ blog.publishedDate | date:'shortDate' }}</p>
+          <h2>{{ blog.title }}</h2>
+          <p>{{ blog.description | slice:0:80 }} ...</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="right">
+      <p>On this Page</p>
+      <h2>Food Safety News Blogs</h2>
+      <p>Featured Year Wise</p>
+  
+      <button (click)="filterByYear(2025)">2025</button>
+      <button (click)="filterByYear(2024)">2024</button>
+      <button (click)="filterByYear(2023)">2023</button>
+      <button (click)="filterByYear(2022)">2022</button>
+      <button (click)="filterByYear(2021)">2021</button>
+      <button (click)="filterByYear(2020)">2020</button>
+    </div>
+  </div>
