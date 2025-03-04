@@ -1,5 +1,8 @@
-
 <div class="grid-container">
-    <div class="grid-item" ><app-shipment-status-chart-component [shipments]="shipmentList"></app-shipment-status-chart-component></div>
+  <div class="grid-item">
+      <app-shipment-status-chart-component 
+          [shipments]="shipmentList"
+          [chartColors]="['#212121', '#FFA500', '#FF0000', '#0000FF']">
+      </app-shipment-status-chart-component>
   </div>
-  
+</div>

@@ -6,19 +6,10 @@
     </canvas>
     <div class="chart-center">{{ totalShipments }}</div>
   
-    <!-- Legend on the Right -->
+    <!-- Dynamic Legend -->
     <div class="legend-container">
-      <div class="legend-item">
-        <div class="legend-color" style="background-color: #4CAF50;"></div> Completed
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background-color: #FFC107;"></div> In-Transit
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background-color: #F44336;"></div> Failed
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background-color: #2196F3;"></div> Pending
+      <div class="legend-item" *ngFor="let label of doughnutChartData.labels; let i = index">
+        <div class="legend-color" [ngStyle]="{ 'background-color': chartColors[i] }"></div> {{ label }}
       </div>
     </div>
   </div>

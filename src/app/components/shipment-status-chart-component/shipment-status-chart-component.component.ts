@@ -1,4 +1,4 @@
-
+import { NgFor, NgStyle } from '@angular/common';
 import { Component, Input, OnChanges } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
@@ -6,17 +6,18 @@ import { NgChartsModule } from 'ng2-charts';
 @Component({
   selector: 'app-shipment-status-chart-component',
   standalone: true,
-  imports: [NgChartsModule],
+  imports: [NgChartsModule,NgFor,NgStyle],
   templateUrl: './shipment-status-chart-component.component.html',
   styleUrl: './shipment-status-chart-component.component.scss'
 })
-export class ShipmentStatusChartComponentComponent  implements OnChanges {
+export class ShipmentStatusChartComponentComponent implements OnChanges {
   @Input() shipments: any[] = [];
+  @Input() chartColors: string[] = ['#4CAF50', '#FFC107', '#F44336', '#2196F3']; // Default colors
 
   totalShipments: number = 0;
   doughnutChartData: ChartData<'doughnut'> = {
     labels: ['Completed', 'In-Transit', 'Failed', 'Pending'],
-    datasets: [{ data: [], backgroundColor: ['#4CAF50', '#FFC107', '#F44336', '#2196F3'] }]
+    datasets: [{ data: [], backgroundColor: [] }]
   };
   doughnutChartOptions: ChartOptions<'doughnut'> = {
     responsive: true,
@@ -39,6 +40,6 @@ export class ShipmentStatusChartComponentComponent  implements OnChanges {
     });
 
     this.doughnutChartData.datasets[0].data = Object.values(statusCounts);
+    this.doughnutChartData.datasets[0].backgroundColor = this.chartColors; // Set dynamic colors
   }
 }
-
